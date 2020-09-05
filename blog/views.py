@@ -4,6 +4,13 @@ from .models import Post
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm
 from django.shortcuts import redirect
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+# from django.views.generic import TemplateView
+# from django.contrib.auth.mixins import LoginRequiredMixin
+# from django.views.decorators.csrf import csrf_exempt
+# from django.http import HttpResponse
+# @csrf_exempt
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -39,3 +46,7 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+def login(request):
+    return render(request, 'login.html', {'form': form})
+    # return render_to_response('login.html', context_instance=RequestContext(request))
+    # return HttpResponse("I have opened my view up to cross site request forgery, yippee!")
