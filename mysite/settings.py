@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'social_django',
+    'django_private_chat'
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 STATIC_URL = '/static/'
 
@@ -145,3 +147,7 @@ LOGOUT_REDIRECT_URL = 'http://127.0.0.1:8000/login'
 SOCIAL_AUTH_FACEBOOK_KEY = '364092634619222'
 
 SOCIAL_AUTH_FACEBOOK_SECRET = '34df6ae77a92fac23a5933c026d61034'
+
+CHAT_WS_SERVER_HOST = 'localhost'
+CHAT_WS_SERVER_PORT = 5002
+CHAT_WS_SERVER_PROTOCOL = 'ws'

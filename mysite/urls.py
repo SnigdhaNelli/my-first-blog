@@ -20,6 +20,8 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import LogoutView
+from blog import views
+from django_private_chat import urls as django_private_chat_urls
 # from core import views as core_views
 
 
@@ -34,4 +36,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     path('oauth/', include('social_django.urls', namespace='social')),
     # url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
+    url(r'^search/$', views.search, name='search'),
+    url(r'^', include('django_private_chat.urls')),
+    path('chat/', views.chat, name='chat'),
 ]

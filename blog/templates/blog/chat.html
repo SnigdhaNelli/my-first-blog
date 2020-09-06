@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  {% for chat in chats %}
+    <div class="chats">
+      <p>{{ user.username }}: {{ chat.message }}</p>
+    </div>
+{% endfor %}
+    <h2>Hi {{ user.username }}!</h2>
+    <form method="CHAT" class="chat-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="Send" class="send btn btn-default">Send</button>
+    </form>
+{% endblock %}

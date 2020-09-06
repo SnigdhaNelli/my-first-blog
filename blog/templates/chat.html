@@ -1,8 +1,6 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-  <p>Hi {{ user.username }}! / <a href="{% url 'logout' %}">Logout</a>
-  <p> <a href="{% url 'chat' %}">Chat Box!</a>
   {% for post in posts %}
     <div class="post">
       <div class="date">
@@ -11,5 +9,10 @@
       <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
       <p>{{ post.text|linebreaksbr }}</p>
     </div>
-  {% endfor %}
+{% endfor %}
+    <h2>Hi {{ user.username }}!</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="send" class="save btn btn-default">Save</button>
+    </form>
 {% endblock %}
